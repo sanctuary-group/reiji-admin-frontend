@@ -1,0 +1,193 @@
+/* ========================================
+   Design Tokens - REIJI Admin
+   ======================================== */
+
+:root,
+[data-theme="light"] {
+  /* Backgrounds - Neutral Gray */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f3f5;
+
+  /* Primary - Slate Gray */
+  --color-primary: #475569;
+  --color-primary-light: #64748b;
+  --color-primary-dark: #334155;
+  --color-primary-bg: rgba(71, 85, 105, 0.08);
+
+  /* Accent - Cool Blue */
+  --color-accent: #3b82f6;
+  --color-accent-light: #60a5fa;
+  --color-accent-bg: rgba(59, 130, 246, 0.08);
+
+  /* Text */
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+
+  /* Borders */
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+
+  /* P&L Colors */
+  --color-profit: #dc2626;
+  --color-profit-bg: rgba(220, 38, 38, 0.06);
+  --color-loss: #16a34a;
+  --color-loss-bg: rgba(22, 163, 74, 0.06);
+
+  /* Status Colors */
+  --color-success: #16a34a;
+  --color-success-bg: rgba(22, 163, 74, 0.08);
+  --color-warning: #d97706;
+  --color-warning-bg: rgba(217, 119, 6, 0.08);
+  --color-danger: #dc2626;
+  --color-danger-bg: rgba(220, 38, 38, 0.08);
+  --color-info: #2563eb;
+  --color-info-bg: rgba(37, 99, 235, 0.08);
+
+  /* Category colors */
+  --cat-stock: #ef4444;
+  --cat-stock-bg: rgba(239, 68, 68, 0.1);
+  --cat-margin: #0d9488;
+  --cat-margin-bg: rgba(13, 148, 136, 0.1);
+  --cat-fx: #d97706;
+  --cat-fx-bg: rgba(217, 119, 6, 0.1);
+  --cat-crypto: #7c3aed;
+  --cat-crypto-bg: rgba(124, 58, 237, 0.1);
+  --cat-dividend: #2563eb;
+  --cat-dividend-bg: rgba(37, 99, 235, 0.1);
+
+  /* Interactive */
+  --hover-bg: #f1f5f9;
+  --focus-ring: rgba(71, 85, 105, 0.4);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-glow: 0 0 24px rgba(71, 85, 105, 0.12);
+
+  /* Overlay */
+  --overlay-bg: rgba(15, 23, 42, 0.5);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+
+  --color-primary: #94a3b8;
+  --color-primary-light: #cbd5e1;
+  --color-primary-dark: #64748b;
+  --color-primary-bg: rgba(148, 163, 184, 0.1);
+
+  --color-accent: #60a5fa;
+  --color-accent-light: #93c5fd;
+  --color-accent-bg: rgba(96, 165, 250, 0.1);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+
+  --border-primary: #334155;
+  --border-secondary: #475569;
+
+  --color-profit: #f87171;
+  --color-profit-bg: rgba(248, 113, 113, 0.1);
+  --color-loss: #4ade80;
+  --color-loss-bg: rgba(74, 222, 128, 0.1);
+
+  --color-success: #4ade80;
+  --color-success-bg: rgba(74, 222, 128, 0.1);
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(251, 191, 36, 0.1);
+  --color-danger: #f87171;
+  --color-danger-bg: rgba(248, 113, 113, 0.1);
+  --color-info: #60a5fa;
+  --color-info-bg: rgba(96, 165, 250, 0.1);
+
+  --cat-stock: #f87171;
+  --cat-stock-bg: rgba(248, 113, 113, 0.12);
+  --cat-margin: #2dd4bf;
+  --cat-margin-bg: rgba(45, 212, 191, 0.12);
+  --cat-fx: #fbbf24;
+  --cat-fx-bg: rgba(251, 191, 36, 0.12);
+  --cat-crypto: #a78bfa;
+  --cat-crypto-bg: rgba(167, 139, 250, 0.12);
+  --cat-dividend: #60a5fa;
+  --cat-dividend-bg: rgba(96, 165, 250, 0.12);
+
+  --hover-bg: #334155;
+  --focus-ring: rgba(148, 163, 184, 0.4);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 24px rgba(148, 163, 184, 0.15);
+
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+}
+
+/* Border Radius */
+:root {
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* Typography */
+:root {
+  --font-sans: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+}
+
+/* Spacing */
+:root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+}
+
+/* Admin Layout Dimensions */
+:root {
+  --admin-sidebar-width: 260px;
+  --admin-sidebar-collapsed: 64px;
+  --admin-header-height: 60px;
+  --z-admin-sidebar: 1100;
+  --z-admin-header: 1000;
+  --z-admin-overlay: 1050;
+}
+
+/* Transitions */
+:root {
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

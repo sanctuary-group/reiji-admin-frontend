@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REIJI Admin - ユーザー管理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/admin-layout.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/pages/users.css">
+</head>
+<body>
+  <script src="assets/js/theme.js"></script>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-header">
+      <a href="dashboard.html" class="admin-sidebar-logo">
+        <img src="assets/img/logo.svg" alt="REIJI">
+        <span class="admin-sidebar-logo-text">REIJI</span>
+        <span class="admin-sidebar-logo-badge">Admin</span>
+      </a>
+    </div>
+    <nav class="admin-sidebar-nav">
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">メイン</div>
+        <a href="dashboard.html" class="admin-nav-item"><i class="fa-solid fa-gauge"></i><span>ダッシュボード</span></a>
+        <a href="users.html" class="admin-nav-item active"><i class="fa-solid fa-users"></i><span>ユーザー管理</span></a>
+        <a href="posts.html" class="admin-nav-item"><i class="fa-solid fa-newspaper"></i><span>投稿管理</span></a>
+        <a href="pnl.html" class="admin-nav-item"><i class="fa-solid fa-chart-line"></i><span>損益データ</span></a>
+      </div>
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">システム</div>
+        <a href="notifications.html" class="admin-nav-item"><i class="fa-solid fa-bell"></i><span>お知らせ</span><span class="admin-nav-badge">1</span></a>
+        <a href="settings.html" class="admin-nav-item"><i class="fa-solid fa-gear"></i><span>設定</span></a>
+      </div>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <div class="admin-sidebar-user">
+        <div class="avatar avatar-sm"><img src="assets/img/avatars/default.svg" alt=""></div>
+        <div class="admin-sidebar-user-info">
+          <div class="admin-sidebar-user-name">管理者A</div>
+          <div class="admin-sidebar-user-role">スーパー管理者</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sidebar Overlay -->
+  <div class="admin-sidebar-overlay"></div>
+
+  <!-- Main Wrapper -->
+  <div class="admin-main-wrapper">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <button class="admin-sidebar-toggle" aria-label="メニュー切替">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h2 class="admin-page-title">ユーザー管理</h2>
+      </div>
+      <div class="admin-header-right">
+        <button class="theme-toggle" aria-label="テーマ切替"></button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="admin-content">
+      <!-- Page Header -->
+      <div class="admin-page-header">
+        <div class="admin-page-header-left">
+          <h1>ユーザー管理</h1>
+          <p>登録ユーザーの一覧・検索・ステータス管理</p>
+        </div>
+        <button class="btn btn-primary">
+          <i class="fa-solid fa-user-plus"></i>
+          ユーザー追加
+        </button>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="admin-filter-bar">
+        <div class="admin-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="userSearch" placeholder="名前・メールアドレスで検索...">
+        </div>
+        <select class="admin-filter-select" id="userStatusFilter">
+          <option value="all">すべてのステータス</option>
+          <option value="active">アクティブ</option>
+          <option value="suspended">停止中</option>
+          <option value="deleted">削除済み</option>
+        </select>
+      </div>
+
+      <!-- User Table -->
+      <div class="admin-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ユーザー</th>
+              <th>登録日</th>
+              <th>ステータス</th>
+              <th>最終ログイン</th>
+              <th>総損益</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody"></tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="admin-pagination">
+          <div class="admin-pagination-info" id="paginationInfo">全 0 件</div>
+          <div class="admin-pagination-controls">
+            <button class="admin-pagination-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="admin-pagination-btn active">1</button>
+            <button class="admin-pagination-btn"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- User Detail Modal -->
+  <div class="modal-overlay" id="userDetailModal">
+    <div class="modal-content user-detail-modal">
+      <div class="modal-header">
+        <div class="modal-title">ユーザー詳細</div>
+        <button class="modal-close" aria-label="閉じる">&times;</button>
+      </div>
+      <div class="modal-body" id="userDetailBody"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/admin-nav.js"></script>
+  <script src="assets/js/users.js"></script>
+</body>
+</html>

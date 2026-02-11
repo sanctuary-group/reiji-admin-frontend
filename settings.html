@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REIJI Admin - システム設定</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/admin-layout.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/pages/settings.css">
+</head>
+<body>
+  <script src="assets/js/theme.js"></script>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-header">
+      <a href="dashboard.html" class="admin-sidebar-logo">
+        <img src="assets/img/logo.svg" alt="REIJI">
+        <span class="admin-sidebar-logo-text">REIJI</span>
+        <span class="admin-sidebar-logo-badge">Admin</span>
+      </a>
+    </div>
+    <nav class="admin-sidebar-nav">
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">メイン</div>
+        <a href="dashboard.html" class="admin-nav-item">
+          <i class="fa-solid fa-gauge"></i>
+          <span>ダッシュボード</span>
+        </a>
+        <a href="users.html" class="admin-nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span>ユーザー管理</span>
+        </a>
+        <a href="posts.html" class="admin-nav-item">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>投稿管理</span>
+        </a>
+        <a href="pnl.html" class="admin-nav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>損益データ</span>
+        </a>
+      </div>
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">システム</div>
+        <a href="notifications.html" class="admin-nav-item">
+          <i class="fa-solid fa-bell"></i>
+          <span>お知らせ</span>
+          <span class="admin-nav-badge">1</span>
+        </a>
+        <a href="settings.html" class="admin-nav-item active">
+          <i class="fa-solid fa-gear"></i>
+          <span>設定</span>
+        </a>
+      </div>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <div class="admin-sidebar-user">
+        <div class="avatar avatar-sm">
+          <img src="assets/img/avatars/default.svg" alt="">
+        </div>
+        <div class="admin-sidebar-user-info">
+          <div class="admin-sidebar-user-name">管理者A</div>
+          <div class="admin-sidebar-user-role">スーパー管理者</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sidebar Overlay -->
+  <div class="admin-sidebar-overlay"></div>
+
+  <!-- Main Wrapper -->
+  <div class="admin-main-wrapper">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <button class="admin-sidebar-toggle" aria-label="メニュー切替">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h2 class="admin-page-title">設定</h2>
+      </div>
+      <div class="admin-header-right">
+        <button class="theme-toggle" aria-label="テーマ切替"></button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="admin-content">
+      <!-- Page Header -->
+      <div class="admin-page-header">
+        <div class="admin-page-header-left">
+          <h1>システム設定</h1>
+          <p>サイト全体の設定を管理します</p>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="general">一般</button>
+        <button class="admin-tab" data-tab="categories">カテゴリ</button>
+        <button class="admin-tab" data-tab="display">表示</button>
+        <button class="admin-tab" data-tab="account">アカウント</button>
+      </div>
+
+      <!-- Tab 1: General -->
+      <div class="admin-tab-content active" data-tab-content="general">
+        <div class="settings-card">
+          <div class="settings-card-header">基本設定</div>
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label class="form-label" for="settingSiteName">サイト名</label>
+              <input type="text" id="settingSiteName" class="form-input" placeholder="サイト名を入力">
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-label">メンテナンスモード</div>
+                <div class="settings-row-desc">有効にするとユーザーはサイトにアクセスできなくなります</div>
+              </div>
+              <label class="settings-toggle">
+                <input type="checkbox" id="settingMaintenance">
+                <span class="settings-toggle-track"></span>
+              </label>
+            </div>
+            <div class="form-group mt-4">
+              <label class="form-label" for="settingSiteDesc">サイト説明</label>
+              <textarea id="settingSiteDesc" class="form-input" rows="3" placeholder="サイトの説明を入力"></textarea>
+            </div>
+            <div class="mt-6" style="text-align: right;">
+              <button class="btn btn-primary" id="generalSaveBtn">
+                <i class="fa-solid fa-save"></i> 保存
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Categories -->
+      <div class="admin-tab-content" data-tab-content="categories">
+        <div class="settings-card">
+          <div class="settings-card-header" style="display:flex;align-items:center;justify-content:space-between;">
+            <span>カテゴリ管理</span>
+            <button class="btn btn-sm btn-primary" id="addCategoryBtn">
+              <i class="fa-solid fa-plus"></i> カテゴリを追加
+            </button>
+          </div>
+          <div class="settings-category-list" id="categoriesList">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Display -->
+      <div class="admin-tab-content" data-tab-content="display">
+        <div class="settings-card">
+          <div class="settings-card-header">表示設定</div>
+          <div class="settings-card-body">
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-label">デフォルトテーマ</div>
+                <div class="settings-row-desc">新規ユーザーに適用されるデフォルトのテーマを選択します</div>
+              </div>
+              <div class="settings-radio-group">
+                <label class="settings-radio-label">
+                  <input type="radio" name="defaultTheme" id="themeLight" value="light">
+                  <span>ライト</span>
+                </label>
+                <label class="settings-radio-label">
+                  <input type="radio" name="defaultTheme" id="themeDark" value="dark">
+                  <span>ダーク</span>
+                </label>
+              </div>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-label">通貨フォーマット</div>
+                <div class="settings-row-desc">損益データの表示に使用する通貨を選択します</div>
+              </div>
+              <select id="settingCurrency" class="form-input" style="width:auto;min-width:160px;">
+                <option value="jpy">JPY (¥)</option>
+                <option value="usd">USD ($)</option>
+                <option value="eur">EUR (&euro;)</option>
+              </select>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-label">日付フォーマット</div>
+                <div class="settings-row-desc">サイト全体で使用される日付の表示形式を選択します</div>
+              </div>
+              <select id="settingDateFormat" class="form-input" style="width:auto;min-width:160px;">
+                <option value="yyyy/mm/dd">YYYY/MM/DD</option>
+                <option value="dd/mm/yyyy">DD/MM/YYYY</option>
+                <option value="mm/dd/yyyy">MM/DD/YYYY</option>
+              </select>
+            </div>
+            <div class="mt-6" style="text-align: right;">
+              <button class="btn btn-primary" id="displaySaveBtn">
+                <i class="fa-solid fa-save"></i> 保存
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Account -->
+      <div class="admin-tab-content" data-tab-content="account">
+        <!-- Profile Edit -->
+        <div class="settings-card mb-6">
+          <div class="settings-card-header">プロフィール編集</div>
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label class="form-label" for="settingAdminName">表示名</label>
+              <input type="text" id="settingAdminName" class="form-input" placeholder="表示名を入力">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="settingAdminEmail">メールアドレス</label>
+              <input type="email" id="settingAdminEmail" class="form-input" placeholder="メールアドレスを入力">
+            </div>
+            <div style="text-align: right;">
+              <button class="btn btn-primary" id="profileSaveBtn">
+                <i class="fa-solid fa-save"></i> 保存
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password Change -->
+        <div class="settings-card mb-6">
+          <div class="settings-card-header">パスワード変更</div>
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label class="form-label" for="settingCurrentPassword">現在のパスワード</label>
+              <input type="password" id="settingCurrentPassword" class="form-input" placeholder="現在のパスワードを入力">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="settingNewPassword">新しいパスワード</label>
+              <input type="password" id="settingNewPassword" class="form-input" placeholder="新しいパスワードを入力">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="settingConfirmPassword">新しいパスワード（確認）</label>
+              <input type="password" id="settingConfirmPassword" class="form-input" placeholder="新しいパスワードを再入力">
+            </div>
+            <div style="text-align: right;">
+              <button class="btn btn-secondary" id="passwordSaveBtn">
+                <i class="fa-solid fa-key"></i> パスワードを変更
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Users -->
+        <div class="settings-card mb-6">
+          <div class="settings-card-header">管理者ユーザー</div>
+          <div class="settings-admin-list" id="adminUsersList">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="settings-danger-zone">
+          <div class="settings-danger-zone-header">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>危険な操作</span>
+          </div>
+          <div class="settings-danger-zone-body">
+            <div class="settings-danger-zone-item">
+              <div class="settings-danger-zone-item-info">
+                <div class="settings-danger-zone-item-label">データエクスポート</div>
+                <div class="settings-danger-zone-item-desc">全データをJSON形式でエクスポートします</div>
+              </div>
+              <button class="btn btn-ghost btn-sm" id="dangerExportBtn">
+                <i class="fa-solid fa-download"></i> エクスポート
+              </button>
+            </div>
+            <div class="settings-danger-zone-item">
+              <div class="settings-danger-zone-item-info">
+                <div class="settings-danger-zone-item-label">アカウント削除</div>
+                <div class="settings-danger-zone-item-desc">管理者アカウントを完全に削除します。この操作は取り消せません</div>
+              </div>
+              <button class="btn btn-danger btn-sm" id="dangerDeleteBtn">
+                <i class="fa-solid fa-trash"></i> アカウントを削除
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/admin-nav.js"></script>
+  <script src="assets/js/settings.js"></script>
+</body>
+</html>

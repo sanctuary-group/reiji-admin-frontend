@@ -1,0 +1,24 @@
+/* ========================================
+   Posts Page
+   ======================================== */
+
+.post-title-cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.post-title-text {
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+}
+
+.post-excerpt {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 320px;
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REIJI Admin - お知らせ管理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/admin-layout.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/pages/notifications.css">
+</head>
+<body>
+  <script src="assets/js/theme.js"></script>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-header">
+      <a href="dashboard.html" class="admin-sidebar-logo">
+        <img src="assets/img/logo.svg" alt="REIJI">
+        <span class="admin-sidebar-logo-text">REIJI</span>
+        <span class="admin-sidebar-logo-badge">Admin</span>
+      </a>
+    </div>
+    <nav class="admin-sidebar-nav">
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">メイン</div>
+        <a href="dashboard.html" class="admin-nav-item">
+          <i class="fa-solid fa-gauge"></i>
+          <span>ダッシュボード</span>
+        </a>
+        <a href="users.html" class="admin-nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span>ユーザー管理</span>
+        </a>
+        <a href="posts.html" class="admin-nav-item">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>投稿管理</span>
+        </a>
+        <a href="pnl.html" class="admin-nav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>損益データ</span>
+        </a>
+      </div>
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">システム</div>
+        <a href="notifications.html" class="admin-nav-item active">
+          <i class="fa-solid fa-bell"></i>
+          <span>お知らせ</span>
+          <span class="admin-nav-badge">1</span>
+        </a>
+        <a href="settings.html" class="admin-nav-item">
+          <i class="fa-solid fa-gear"></i>
+          <span>設定</span>
+        </a>
+      </div>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <div class="admin-sidebar-user">
+        <div class="avatar avatar-sm">
+          <img src="assets/img/avatars/default.svg" alt="">
+        </div>
+        <div class="admin-sidebar-user-info">
+          <div class="admin-sidebar-user-name">管理者A</div>
+          <div class="admin-sidebar-user-role">スーパー管理者</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sidebar Overlay -->
+  <div class="admin-sidebar-overlay"></div>
+
+  <!-- Main Wrapper -->
+  <div class="admin-main-wrapper">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <button class="admin-sidebar-toggle" aria-label="メニュー切替">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h2 class="admin-page-title">お知らせ管理</h2>
+      </div>
+      <div class="admin-header-right">
+        <button class="theme-toggle" aria-label="テーマ切替"></button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="admin-content">
+      <!-- Page Header -->
+      <div class="admin-page-header">
+        <div class="admin-page-header-left">
+          <h1>お知らせ管理</h1>
+          <p>ユーザーへのお知らせの作成・管理を行います</p>
+        </div>
+        <button class="btn btn-primary" id="createNotifBtn">
+          <i class="fa-solid fa-plus"></i> 新規作成
+        </button>
+      </div>
+
+      <!-- Create Notification Form (hidden by default) -->
+      <div class="notif-create-form" id="createNotifForm">
+        <div class="notif-create-form-header">
+          <span class="notif-create-form-title">新規お知らせ作成</span>
+          <button class="btn-icon" id="closeNotifForm" title="閉じる">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Title -->
+        <div class="form-group">
+          <label class="form-label" for="notifTitle">タイトル</label>
+          <input type="text" class="form-input" id="notifTitle" placeholder="お知らせのタイトルを入力">
+        </div>
+
+        <!-- Body -->
+        <div class="form-group">
+          <label class="form-label" for="notifBody">本文</label>
+          <textarea class="form-input" id="notifBody" rows="4" placeholder="お知らせの本文を入力"></textarea>
+        </div>
+
+        <!-- Target + Timing Row -->
+        <div class="notif-form-row">
+          <div class="form-group">
+            <label class="form-label" for="notifTarget">対象</label>
+            <select class="form-input" id="notifTarget">
+              <option value="all">全ユーザー</option>
+              <option value="specific">特定ユーザー</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">送信タイミング</label>
+            <div class="notif-radio-group">
+              <label class="notif-radio-label">
+                <input type="radio" name="notifTiming" value="immediate" checked>
+                即時送信
+              </label>
+              <label class="notif-radio-label">
+                <input type="radio" name="notifTiming" value="scheduled">
+                スケジュール
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="notif-preview" id="notifPreview" style="display:none;">
+          <div class="notif-preview-label">プレビュー</div>
+          <div class="notif-preview-title" id="notifPreviewTitle"></div>
+          <div class="notif-preview-body" id="notifPreviewBody"></div>
+          <div class="notif-preview-meta">
+            <span><i class="fa-solid fa-users"></i> <span id="notifPreviewTarget"></span></span>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="notif-form-actions">
+          <button class="btn btn-ghost" id="notifPreviewBtn">
+            <i class="fa-solid fa-eye"></i> プレビュー
+          </button>
+          <button class="btn btn-primary" id="notifSendBtn">
+            <i class="fa-solid fa-paper-plane"></i> 送信
+          </button>
+        </div>
+      </div>
+
+      <!-- Notifications Table -->
+      <div class="admin-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>対象</th>
+              <th>送信日時</th>
+              <th>ステータス</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="notifTableBody"></tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="admin-pagination">
+          <div class="admin-pagination-info" id="notifPaginationInfo"></div>
+          <div class="admin-pagination-controls" id="notifPaginationControls"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/admin-nav.js"></script>
+  <script src="assets/js/notifications.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REIJI Admin - ダッシュボード</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/admin-layout.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/pages/dashboard.css">
+</head>
+<body>
+  <script src="assets/js/theme.js"></script>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-header">
+      <a href="dashboard.html" class="admin-sidebar-logo">
+        <img src="assets/img/logo.svg" alt="REIJI">
+        <span class="admin-sidebar-logo-text">REIJI</span>
+        <span class="admin-sidebar-logo-badge">Admin</span>
+      </a>
+    </div>
+    <nav class="admin-sidebar-nav">
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">メイン</div>
+        <a href="dashboard.html" class="admin-nav-item active">
+          <i class="fa-solid fa-gauge"></i>
+          <span>ダッシュボード</span>
+        </a>
+        <a href="users.html" class="admin-nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span>ユーザー管理</span>
+        </a>
+        <a href="posts.html" class="admin-nav-item">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>投稿管理</span>
+        </a>
+        <a href="pnl.html" class="admin-nav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>損益データ</span>
+        </a>
+      </div>
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">システム</div>
+        <a href="notifications.html" class="admin-nav-item">
+          <i class="fa-solid fa-bell"></i>
+          <span>お知らせ</span>
+          <span class="admin-nav-badge">1</span>
+        </a>
+        <a href="settings.html" class="admin-nav-item">
+          <i class="fa-solid fa-gear"></i>
+          <span>設定</span>
+        </a>
+      </div>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <div class="admin-sidebar-user">
+        <div class="avatar avatar-sm">
+          <img src="assets/img/avatars/default.svg" alt="">
+        </div>
+        <div class="admin-sidebar-user-info">
+          <div class="admin-sidebar-user-name">管理者A</div>
+          <div class="admin-sidebar-user-role">スーパー管理者</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sidebar Overlay -->
+  <div class="admin-sidebar-overlay"></div>
+
+  <!-- Main Wrapper -->
+  <div class="admin-main-wrapper">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <button class="admin-sidebar-toggle" aria-label="メニュー切替">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h2 class="admin-page-title">ダッシュボード</h2>
+      </div>
+      <div class="admin-header-right">
+        <button class="theme-toggle" aria-label="テーマ切替"></button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="admin-content">
+      <!-- KPI Cards -->
+      <div class="dashboard-kpi-grid" id="kpiCards"></div>
+
+      <!-- Charts Row -->
+      <div class="dashboard-grid-2">
+        <!-- Bar Chart - Daily Registrations -->
+        <div class="chart-placeholder">
+          <div class="chart-placeholder-header">
+            <span class="chart-placeholder-title">新規登録推移（直近7日）</span>
+          </div>
+          <div class="chart-placeholder-body">
+            <div class="simple-bar-chart" id="barChart"></div>
+          </div>
+        </div>
+
+        <!-- Donut Chart - Category Breakdown -->
+        <div class="chart-placeholder">
+          <div class="chart-placeholder-header">
+            <span class="chart-placeholder-title">カテゴリ別取引数</span>
+          </div>
+          <div class="chart-placeholder-body">
+            <div class="simple-donut-chart">
+              <div class="donut-ring" id="donutRing"></div>
+              <div class="donut-legend" id="donutLegend"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="dashboard-activity">
+        <div class="dashboard-activity-header">
+          <span class="dashboard-activity-title">最近のアクティビティ</span>
+          <a href="#" class="btn btn-ghost btn-sm">すべて見る</a>
+        </div>
+        <div class="admin-table-wrapper" style="border:none;border-radius:0;box-shadow:none;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>日時</th>
+                <th>管理者</th>
+                <th>アクション</th>
+                <th>対象</th>
+              </tr>
+            </thead>
+            <tbody id="activityTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/admin-nav.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

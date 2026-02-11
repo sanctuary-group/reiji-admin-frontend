@@ -1,0 +1,102 @@
+/* ========================================
+   P&L Data Page
+   ======================================== */
+
+/* ---- Summary KPI Grid (4 columns) ---- */
+.pnl-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+/* ---- Category Breakdown Grid (5 columns) ---- */
+.pnl-category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+/* ---- Category Card ---- */
+.pnl-category-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--border-primary);
+  transition: all var(--transition-base);
+}
+
+.pnl-category-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.pnl-category-card.stock { border-left-color: var(--cat-stock); }
+.pnl-category-card.margin { border-left-color: var(--cat-margin); }
+.pnl-category-card.fx { border-left-color: var(--cat-fx); }
+.pnl-category-card.crypto { border-left-color: var(--cat-crypto); }
+.pnl-category-card.dividend { border-left-color: var(--cat-dividend); }
+
+.pnl-category-card-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.pnl-category-card-amount {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--space-1);
+}
+
+.pnl-category-card-count {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+/* ---- Section Title ---- */
+.pnl-section-title {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Responsive: Summary Grid ---- */
+@media (max-width: 1024px) {
+  .pnl-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pnl-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Responsive: Category Grid ---- */
+@media (max-width: 1280px) {
+  .pnl-category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .pnl-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pnl-category-grid {
+    grid-template-columns: 1fr;
+  }
+}

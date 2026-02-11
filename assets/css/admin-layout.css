@@ -1,0 +1,387 @@
+/* ========================================
+   Admin Layout - Sidebar + Header + Main
+   ======================================== */
+
+/* ---- Sidebar ---- */
+.admin-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--admin-sidebar-width);
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-primary);
+  display: flex;
+  flex-direction: column;
+  z-index: var(--z-admin-sidebar);
+  transition: width var(--transition-base), transform var(--transition-base);
+  overflow: hidden;
+}
+
+.admin-sidebar-header {
+  height: var(--admin-header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--border-primary);
+  flex-shrink: 0;
+}
+
+.admin-sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.admin-sidebar-logo img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-logo-text {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.admin-sidebar-logo-badge {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--text-tertiary);
+  background: var(--bg-tertiary);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.admin-sidebar-nav {
+  flex: 1;
+  padding: var(--space-4) var(--space-3);
+  overflow-y: auto;
+}
+
+.admin-nav-section {
+  margin-bottom: var(--space-4);
+}
+
+.admin-nav-section-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 var(--space-3);
+  margin-bottom: var(--space-2);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+}
+
+.admin-nav-item i {
+  width: 20px;
+  text-align: center;
+  font-size: var(--text-base);
+  flex-shrink: 0;
+}
+
+.admin-nav-item:hover {
+  background: var(--hover-bg);
+  color: var(--text-primary);
+}
+
+.admin-nav-item.active {
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+  font-weight: var(--font-semibold);
+}
+
+.admin-nav-item.active i {
+  color: var(--color-primary);
+}
+
+.admin-nav-badge {
+  margin-left: auto;
+  background: var(--color-danger);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  min-width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+.admin-sidebar-footer {
+  padding: var(--space-4) var(--space-4);
+  border-top: 1px solid var(--border-primary);
+  flex-shrink: 0;
+}
+
+.admin-sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  overflow: hidden;
+}
+
+.admin-sidebar-user .avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-user-info {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.admin-sidebar-user-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.admin-sidebar-user-role {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+/* ---- Main Wrapper ---- */
+.admin-main-wrapper {
+  margin-left: var(--admin-sidebar-width);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left var(--transition-base);
+}
+
+/* ---- Header ---- */
+.admin-header {
+  position: sticky;
+  top: 0;
+  height: var(--admin-header-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  z-index: var(--z-admin-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.admin-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.admin-sidebar-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--text-xl);
+  transition: background var(--transition-fast);
+}
+
+.admin-sidebar-toggle:hover {
+  background: var(--hover-bg);
+}
+
+.admin-page-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+}
+
+.admin-header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---- Content ---- */
+.admin-content {
+  flex: 1;
+  padding: var(--space-6);
+}
+
+/* ---- Page Header ---- */
+.admin-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.admin-page-header-left h1 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+}
+
+.admin-page-header-left p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* ---- Sidebar Overlay (mobile) ---- */
+.admin-sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg);
+  z-index: var(--z-admin-overlay);
+}
+
+.admin-sidebar-overlay.open {
+  display: block;
+}
+
+/* ---- Collapsed State (tablet) ---- */
+@media (max-width: 1024px) {
+  .admin-sidebar {
+    width: var(--admin-sidebar-collapsed);
+  }
+
+  .admin-sidebar-logo-text,
+  .admin-sidebar-logo-badge,
+  .admin-nav-section-label,
+  .admin-nav-item span,
+  .admin-nav-badge,
+  .admin-sidebar-user-info {
+    display: none;
+  }
+
+  .admin-nav-item {
+    justify-content: center;
+    padding: var(--space-3);
+  }
+
+  .admin-nav-item i {
+    font-size: var(--text-lg);
+  }
+
+  .admin-sidebar-user {
+    justify-content: center;
+  }
+
+  .admin-main-wrapper {
+    margin-left: var(--admin-sidebar-collapsed);
+  }
+
+  .admin-sidebar-toggle {
+    display: flex;
+  }
+
+  /* Expanded state on tablet */
+  .admin-sidebar.expanded {
+    width: var(--admin-sidebar-width);
+  }
+
+  .admin-sidebar.expanded .admin-sidebar-logo-text,
+  .admin-sidebar.expanded .admin-sidebar-logo-badge,
+  .admin-sidebar.expanded .admin-nav-section-label,
+  .admin-sidebar.expanded .admin-nav-item span,
+  .admin-sidebar.expanded .admin-nav-badge,
+  .admin-sidebar.expanded .admin-sidebar-user-info {
+    display: block;
+  }
+
+  .admin-sidebar.expanded .admin-nav-item {
+    justify-content: flex-start;
+    padding: var(--space-3) var(--space-3);
+  }
+
+  .admin-sidebar.expanded .admin-nav-item i {
+    font-size: var(--text-base);
+  }
+
+  .admin-sidebar.expanded .admin-sidebar-user {
+    justify-content: flex-start;
+  }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: var(--admin-sidebar-width);
+    transform: translateX(-100%);
+  }
+
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-sidebar .admin-sidebar-logo-text,
+  .admin-sidebar .admin-sidebar-logo-badge,
+  .admin-sidebar .admin-nav-section-label,
+  .admin-sidebar .admin-nav-item span,
+  .admin-sidebar .admin-nav-badge,
+  .admin-sidebar .admin-sidebar-user-info {
+    display: block;
+  }
+
+  .admin-sidebar .admin-nav-item {
+    justify-content: flex-start;
+    padding: var(--space-3) var(--space-3);
+  }
+
+  .admin-sidebar .admin-nav-item i {
+    font-size: var(--text-base);
+  }
+
+  .admin-sidebar .admin-sidebar-user {
+    justify-content: flex-start;
+  }
+
+  .admin-main-wrapper {
+    margin-left: 0;
+  }
+
+  .admin-sidebar-toggle {
+    display: flex;
+  }
+
+  .admin-content {
+    padding: var(--space-4);
+  }
+
+  .admin-header {
+    padding: 0 var(--space-4);
+  }
+}

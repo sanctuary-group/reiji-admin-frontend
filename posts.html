@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REIJI Admin - 投稿管理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/admin-layout.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/pages/posts.css">
+</head>
+<body>
+  <script src="assets/js/theme.js"></script>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-header">
+      <a href="dashboard.html" class="admin-sidebar-logo">
+        <img src="assets/img/logo.svg" alt="REIJI">
+        <span class="admin-sidebar-logo-text">REIJI</span>
+        <span class="admin-sidebar-logo-badge">Admin</span>
+      </a>
+    </div>
+    <nav class="admin-sidebar-nav">
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">メイン</div>
+        <a href="dashboard.html" class="admin-nav-item"><i class="fa-solid fa-gauge"></i><span>ダッシュボード</span></a>
+        <a href="users.html" class="admin-nav-item"><i class="fa-solid fa-users"></i><span>ユーザー管理</span></a>
+        <a href="posts.html" class="admin-nav-item active"><i class="fa-solid fa-newspaper"></i><span>投稿管理</span></a>
+        <a href="pnl.html" class="admin-nav-item"><i class="fa-solid fa-chart-line"></i><span>損益データ</span></a>
+      </div>
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">システム</div>
+        <a href="notifications.html" class="admin-nav-item"><i class="fa-solid fa-bell"></i><span>お知らせ</span><span class="admin-nav-badge">1</span></a>
+        <a href="settings.html" class="admin-nav-item"><i class="fa-solid fa-gear"></i><span>設定</span></a>
+      </div>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <div class="admin-sidebar-user">
+        <div class="avatar avatar-sm"><img src="assets/img/avatars/default.svg" alt=""></div>
+        <div class="admin-sidebar-user-info">
+          <div class="admin-sidebar-user-name">管理者A</div>
+          <div class="admin-sidebar-user-role">スーパー管理者</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sidebar Overlay -->
+  <div class="admin-sidebar-overlay"></div>
+
+  <!-- Main Wrapper -->
+  <div class="admin-main-wrapper">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <button class="admin-sidebar-toggle" aria-label="メニュー切替">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h2 class="admin-page-title">投稿管理</h2>
+      </div>
+      <div class="admin-header-right">
+        <button class="theme-toggle" aria-label="テーマ切替"></button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="admin-content">
+      <!-- Page Header -->
+      <div class="admin-page-header">
+        <div class="admin-page-header-left">
+          <h1>投稿管理</h1>
+          <p>ユーザーの投稿コンテンツを管理します</p>
+        </div>
+        <button class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i>
+          新規投稿
+        </button>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="admin-filter-bar">
+        <div class="admin-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="postSearch" placeholder="タイトル・投稿者で検索...">
+        </div>
+        <select class="admin-filter-select" id="postStatusFilter">
+          <option value="all">すべてのステータス</option>
+          <option value="published">公開</option>
+          <option value="draft">下書き</option>
+          <option value="flagged">フラグ付き</option>
+        </select>
+        <select class="admin-filter-select" id="postCategoryFilter">
+          <option value="all">すべてのカテゴリ</option>
+        </select>
+      </div>
+
+      <!-- Posts Table -->
+      <div class="admin-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>投稿者</th>
+              <th>カテゴリ</th>
+              <th>投稿日</th>
+              <th>ステータス</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="postsTableBody"></tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="admin-pagination">
+          <div class="admin-pagination-info" id="postsPaginationInfo"></div>
+          <div class="admin-pagination-controls" id="postsPaginationControls"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/mock-data.js"></script>
+  <script src="assets/js/admin-nav.js"></script>
+  <script src="assets/js/posts.js"></script>
+</body>
+</html>
