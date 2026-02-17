@@ -4,14 +4,7 @@
 
 .dashboard-kpi-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
-}
-
-.dashboard-grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
   margin-bottom: var(--space-6);
 }
@@ -45,6 +38,7 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
+  margin-bottom: var(--space-6);
 }
 
 .chart-placeholder-header {
@@ -111,67 +105,6 @@
   font-family: var(--font-mono);
 }
 
-/* Donut Chart (simple CSS) */
-.simple-donut-chart {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  width: 100%;
-  padding: 0 var(--space-4);
-}
-
-.donut-ring {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.donut-ring::after {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--bg-secondary);
-}
-
-.donut-legend {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  flex: 1;
-}
-
-.donut-legend-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-sm);
-}
-
-.donut-legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: var(--radius-full);
-  flex-shrink: 0;
-}
-
-.donut-legend-label {
-  color: var(--text-secondary);
-  flex: 1;
-}
-
-.donut-legend-value {
-  font-weight: var(--font-semibold);
-  font-family: var(--font-mono);
-  color: var(--text-primary);
-  font-size: var(--text-xs);
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
   .dashboard-kpi-grid {
@@ -181,10 +114,6 @@
 
 @media (max-width: 768px) {
   .dashboard-kpi-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .dashboard-grid-2 {
     grid-template-columns: 1fr;
   }
 }

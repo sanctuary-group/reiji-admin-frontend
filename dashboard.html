@@ -49,12 +49,22 @@
         </a>
       </div>
       <div class="admin-nav-section">
-        <div class="admin-nav-section-label">システム</div>
+        <div class="admin-nav-section-label">コンテンツ</div>
+        <a href="videos.html" class="admin-nav-item">
+          <i class="fa-solid fa-video"></i>
+          <span>動画管理</span>
+        </a>
+        <a href="sites.html" class="admin-nav-item">
+          <i class="fa-solid fa-globe"></i>
+          <span>サイト管理</span>
+        </a>
         <a href="notifications.html" class="admin-nav-item">
           <i class="fa-solid fa-bell"></i>
           <span>お知らせ</span>
-          <span class="admin-nav-badge">1</span>
         </a>
+      </div>
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">システム</div>
         <a href="settings.html" class="admin-nav-item">
           <i class="fa-solid fa-gear"></i>
           <span>設定</span>
@@ -97,29 +107,13 @@
       <!-- KPI Cards -->
       <div class="dashboard-kpi-grid" id="kpiCards"></div>
 
-      <!-- Charts Row -->
-      <div class="dashboard-grid-2">
-        <!-- Bar Chart - Daily Registrations -->
-        <div class="chart-placeholder">
-          <div class="chart-placeholder-header">
-            <span class="chart-placeholder-title">新規登録推移（直近7日）</span>
-          </div>
-          <div class="chart-placeholder-body">
-            <div class="simple-bar-chart" id="barChart"></div>
-          </div>
+      <!-- Bar Chart - Daily Registrations -->
+      <div class="chart-placeholder">
+        <div class="chart-placeholder-header">
+          <span class="chart-placeholder-title">新規登録推移（直近7日）</span>
         </div>
-
-        <!-- Donut Chart - Category Breakdown -->
-        <div class="chart-placeholder">
-          <div class="chart-placeholder-header">
-            <span class="chart-placeholder-title">カテゴリ別取引数</span>
-          </div>
-          <div class="chart-placeholder-body">
-            <div class="simple-donut-chart">
-              <div class="donut-ring" id="donutRing"></div>
-              <div class="donut-legend" id="donutLegend"></div>
-            </div>
-          </div>
+        <div class="chart-placeholder-body">
+          <div class="simple-bar-chart" id="barChart"></div>
         </div>
       </div>
 

@@ -16,12 +16,10 @@ var MOCK_KPI = {
   totalUsers: 1234,
   activeToday: 89,
   newToday: 7,
-  platformPnl: 12345678,
   changes: {
     users: 5.2,
     active: 12.3,
-    new: -2.1,
-    pnl: 8.7
+    new: -2.1
   }
 };
 
@@ -73,11 +71,11 @@ var MOCK_PNL_DATA = [
 
 /* ---- Notifications ---- */
 var MOCK_NOTIFICATIONS = [
-  { id: 1, title: 'システムメンテナンスのお知らせ', body: '2/15 02:00-06:00にメンテナンスを実施します。', target: '全ユーザー', sentAt: '2026-02-10T10:00:00', status: 'sent' },
-  { id: 2, title: '新機能リリース：グラフ分析機能', body: 'P&Lグラフに新しい分析ツールを追加しました。', target: '全ユーザー', sentAt: '2026-02-08T09:00:00', status: 'sent' },
-  { id: 3, title: '確定申告に関する重要なお知らせ', body: '確定申告用のデータエクスポート機能をご利用ください。', target: '全ユーザー', sentAt: '2026-02-05T14:00:00', status: 'sent' },
-  { id: 4, title: 'アカウント停止のお知らせ', body: '利用規約違反のためアカウントを停止しました。', target: '高橋 美咲', sentAt: '2026-01-28T15:00:00', status: 'sent' },
-  { id: 5, title: '3月のイベント告知', body: '投資コンテストを開催予定です。詳細は後日発表。', target: '全ユーザー', sentAt: null, status: 'scheduled' }
+  { id: 1, title: 'サーバーメンテナンスのお知らせ', body: '2/15 AM2:00-5:00の間、サービスを一時停止いたします。ご不便をおかけしますが、ご了承ください。', tag: '重要', tagClass: 'badge-danger', excerpt: '2/15 AM2:00-5:00の間、サービスを一時停止いたします。', target: '全ユーザー', sentAt: '2026-02-10T10:00:00', status: 'sent' },
+  { id: 2, title: '仮想通貨レート表示機能を追加しました', body: 'ダッシュボードにリアルタイム仮想通貨レート表示機能を追加しました。', tag: '新機能', tagClass: 'badge-primary', excerpt: 'ダッシュボードにリアルタイムレート表示機能を追加。', target: '全ユーザー', sentAt: '2026-02-08T14:00:00', status: 'sent' },
+  { id: 3, title: '投資コンテスト開催のお知らせ', body: '2026年3月1日より春の投資コンテストを開催いたします。豪華賞品をご用意しております。', tag: 'イベント', tagClass: 'badge-accent', excerpt: '2026年3月1日より春の投資コンテストを開催。', target: '全ユーザー', sentAt: '2026-02-05T09:00:00', status: 'sent' },
+  { id: 4, title: 'パスワードポリシー変更のご案内', body: 'セキュリティ強化のため、パスワードポリシーを変更いたします。', tag: 'お知らせ', tagClass: 'badge-info', excerpt: 'セキュリティ強化のためパスワードポリシーを変更。', target: '全ユーザー', sentAt: '2026-02-01T11:00:00', status: 'sent' },
+  { id: 5, title: '新規カテゴリ「配当金」追加のお知らせ', body: '取引カテゴリに「配当金」を追加しました。損益記録にご活用ください。', tag: '新機能', tagClass: 'badge-primary', excerpt: '取引カテゴリに「配当金」を追加しました。', target: '全ユーザー', sentAt: '2026-01-28T16:00:00', status: 'sent' }
 ];
 
 /* ---- Activity Log ---- */
@@ -105,12 +103,39 @@ var MOCK_DAILY_REGISTRATIONS = [
   { date: '2/11', count: 7 }
 ];
 
-var MOCK_CATEGORY_TRADES = [
-  { category: '現物取引', count: 456, color: 'var(--cat-stock)' },
-  { category: '信用取引', count: 189, color: 'var(--cat-margin)' },
-  { category: 'FX/CFD', count: 312, color: 'var(--cat-fx)' },
-  { category: '仮想通貨', count: 267, color: 'var(--cat-crypto)' },
-  { category: '配当金', count: 78, color: 'var(--cat-dividend)' }
+/* ---- Videos ---- */
+var MOCK_VIDEOS = [
+  { id: 1, title: '【2026年2月】仮想通貨市場レビュー', url: 'https://youtube.com/watch?v=example1', date: '2026/02/09', views: '12.5万', bgColor: '#ef4444', status: 'published' },
+  { id: 2, title: '初心者必見！FXで勝てるチャート分析', url: 'https://youtube.com/watch?v=example2', date: '2026/02/07', views: '8.2万', bgColor: '#3b82f6', status: 'published' },
+  { id: 3, title: '配当金生活への道：高配当株TOP10', url: 'https://youtube.com/watch?v=example3', date: '2026/02/05', views: '15.1万', bgColor: '#10b981', status: 'published' },
+  { id: 4, title: '信用取引の基礎：リスク管理の鉄則', url: 'https://youtube.com/watch?v=example4', date: '2026/02/03', views: '6.8万', bgColor: '#8b5cf6', status: 'published' },
+  { id: 5, title: '2026年注目の仮想通貨プロジェクト5選', url: 'https://youtube.com/watch?v=example5', date: '2026/01/30', views: '22.3万', bgColor: '#f59e0b', status: 'published' },
+  { id: 6, title: '【ライブ配信】マーケット実況トレード', url: 'https://youtube.com/watch?v=example6', date: '2026/01/28', views: '4.1万', bgColor: '#ec4899', status: 'draft' },
+  { id: 7, title: 'レイジ流：損切りルールの作り方', url: 'https://youtube.com/watch?v=example7', date: '2026/01/25', views: '9.7万', bgColor: '#ef4444', status: 'published' },
+  { id: 8, title: 'ETF vs 個別株：初心者はどちらから？', url: 'https://youtube.com/watch?v=example8', date: '2026/01/22', views: '11.4万', bgColor: '#3b82f6', status: 'published' }
+];
+
+/* ---- Useful Sites ---- */
+var MOCK_USEFUL_SITES = [
+  {
+    id: 1, name: '有益サイト一覧', icon: 'fa-globe',
+    items: [
+      { id: 101, label: 'レイジの有益情報局', url: 'https://example.com/reiji-info' },
+      { id: 102, label: '投資総合情報', url: 'https://example.com/invest-info' },
+      { id: 103, label: '仮想通貨関連', url: 'https://example.com/crypto' },
+      { id: 104, label: 'FX関連', url: 'https://example.com/fx' },
+      { id: 105, label: 'ニュースメディア', url: 'https://example.com/news' },
+      { id: 106, label: '証券会社一覧', url: 'https://example.com/brokers' }
+    ]
+  },
+  {
+    id: 2, name: 'トレードツール', icon: 'fa-wrench',
+    items: [
+      { id: 201, label: 'TradingView', url: 'https://tradingview.com' },
+      { id: 202, label: 'Yahoo!ファイナンス', url: 'https://finance.yahoo.co.jp' },
+      { id: 203, label: 'CoinMarketCap', url: 'https://coinmarketcap.com' }
+    ]
+  }
 ];
 
 /* ---- Admin Users ---- */

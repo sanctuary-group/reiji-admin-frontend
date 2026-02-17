@@ -1,0 +1,120 @@
+/* ========================================
+   Videos Page
+   ======================================== */
+
+/* ---- Create Form (card style, initially hidden) ---- */
+.video-create-form {
+  display: none;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  animation: videoFormSlideIn 0.25s ease-out;
+}
+
+.video-create-form.open {
+  display: block;
+}
+
+@keyframes videoFormSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-create-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.video-create-form-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+}
+
+/* ---- Form Rows ---- */
+.video-form-row {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.video-form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* ---- Form Actions ---- */
+.video-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-primary);
+  margin-top: var(--space-5);
+}
+
+/* ---- Color Swatches ---- */
+.video-color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.video-color-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+  padding: 0;
+}
+
+.video-color-swatch:hover {
+  transform: scale(1.15);
+}
+
+.video-color-swatch.active {
+  box-shadow: 0 0 0 3px var(--bg-primary), 0 0 0 5px currentColor;
+}
+
+/* ---- Thumbnail Cell ---- */
+.video-thumb-cell {
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .video-form-row {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .video-form-actions {
+    flex-direction: column;
+  }
+
+  .video-form-actions .btn {
+    width: 100%;
+  }
+}

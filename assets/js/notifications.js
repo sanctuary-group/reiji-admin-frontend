@@ -24,7 +24,7 @@
     var pageData = data.slice(start, end);
 
     if (pageData.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5" class="empty-state" style="padding:var(--space-8)">' +
+      tbody.innerHTML = '<tr><td colspan="6" class="empty-state" style="padding:var(--space-8)">' +
         '<i class="fa-solid fa-bell-slash"></i>' +
         '<p>お知らせはまだありません</p>' +
         '</td></tr>';
@@ -42,6 +42,7 @@
 
       return '<tr>' +
         '<td><span style="font-weight:var(--font-medium)">' + escapeHtml(notif.title) + '</span></td>' +
+        '<td><span class="badge ' + (notif.tagClass || 'badge-info') + '">' + escapeHtml(notif.tag || 'お知らせ') + '</span></td>' +
         '<td><span class="notif-target-badge ' + targetBadgeClass + '">' +
           '<i class="fa-solid ' + (notif.target === '全ユーザー' ? 'fa-users' : 'fa-user') + '"></i>' +
           escapeHtml(notif.target) +
@@ -125,6 +126,8 @@
     var titleInput = document.getElementById('notifTitle');
     var bodyInput = document.getElementById('notifBody');
     var targetSelect = document.getElementById('notifTarget');
+    var tagSelect = document.getElementById('notifTag');
+    var excerptInput = document.getElementById('notifExcerpt');
 
     // Preview
     if (previewBtn) {
@@ -180,6 +183,8 @@
         // Reset form
         if (titleInput) titleInput.value = '';
         if (bodyInput) bodyInput.value = '';
+        if (tagSelect) tagSelect.value = 'notice';
+        if (excerptInput) excerptInput.value = '';
         if (targetSelect) targetSelect.selectedIndex = 0;
 
         var preview = document.getElementById('notifPreview');

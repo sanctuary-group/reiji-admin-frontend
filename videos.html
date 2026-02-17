@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REIJI Admin - お知らせ管理</title>
+  <title>REIJI Admin - 動画管理</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/admin-layout.css">
   <link rel="stylesheet" href="assets/css/utilities.css">
-  <link rel="stylesheet" href="assets/css/pages/notifications.css">
+  <link rel="stylesheet" href="assets/css/pages/videos.css">
 </head>
 <body>
   <script src="assets/js/theme.js"></script>
@@ -50,7 +50,7 @@
       </div>
       <div class="admin-nav-section">
         <div class="admin-nav-section-label">コンテンツ</div>
-        <a href="videos.html" class="admin-nav-item">
+        <a href="videos.html" class="admin-nav-item active">
           <i class="fa-solid fa-video"></i>
           <span>動画管理</span>
         </a>
@@ -58,7 +58,7 @@
           <i class="fa-solid fa-globe"></i>
           <span>サイト管理</span>
         </a>
-        <a href="notifications.html" class="admin-nav-item active">
+        <a href="notifications.html" class="admin-nav-item">
           <i class="fa-solid fa-bell"></i>
           <span>お知らせ</span>
         </a>
@@ -95,7 +95,7 @@
         <button class="admin-sidebar-toggle" aria-label="メニュー切替">
           <i class="fa-solid fa-bars"></i>
         </button>
-        <h2 class="admin-page-title">お知らせ管理</h2>
+        <h2 class="admin-page-title">動画管理</h2>
       </div>
       <div class="admin-header-right">
         <button class="theme-toggle" aria-label="テーマ切替"></button>
@@ -107,117 +107,84 @@
       <!-- Page Header -->
       <div class="admin-page-header">
         <div class="admin-page-header-left">
-          <h1>お知らせ管理</h1>
-          <p>ユーザーへのお知らせの作成・管理を行います</p>
+          <h1>動画管理</h1>
+          <p>ユーザーに表示する動画コンテンツを管理します</p>
         </div>
-        <button class="btn btn-primary" id="createNotifBtn">
-          <i class="fa-solid fa-plus"></i> 新規作成
+        <button class="btn btn-primary" id="createVideoBtn">
+          <i class="fa-solid fa-plus"></i> 動画を追加
         </button>
       </div>
 
-      <!-- Create Notification Form (hidden by default) -->
-      <div class="notif-create-form" id="createNotifForm">
-        <div class="notif-create-form-header">
-          <span class="notif-create-form-title">新規お知らせ作成</span>
-          <button class="btn-icon" id="closeNotifForm" title="閉じる">
+      <!-- Create Video Form (hidden by default) -->
+      <div class="video-create-form" id="createVideoForm">
+        <div class="video-create-form-header">
+          <span class="video-create-form-title">動画を追加</span>
+          <button class="btn-icon" id="closeVideoForm" title="閉じる">
             <i class="fa-solid fa-times"></i>
           </button>
         </div>
 
         <!-- Title -->
         <div class="form-group">
-          <label class="form-label" for="notifTitle">タイトル</label>
-          <input type="text" class="form-input" id="notifTitle" placeholder="お知らせのタイトルを入力">
+          <label class="form-label" for="videoTitle">タイトル</label>
+          <input type="text" class="form-input" id="videoTitle" placeholder="動画のタイトルを入力">
         </div>
 
-        <!-- Body -->
+        <!-- URL -->
         <div class="form-group">
-          <label class="form-label" for="notifBody">本文</label>
-          <textarea class="form-input" id="notifBody" rows="4" placeholder="お知らせの本文を入力"></textarea>
+          <label class="form-label" for="videoUrl">動画URL</label>
+          <input type="url" class="form-input" id="videoUrl" placeholder="https://youtube.com/...">
         </div>
 
-        <!-- Tag & Excerpt -->
-        <div class="form-group">
-          <label class="form-label" for="notifTag">タグ</label>
-          <select class="form-input" id="notifTag">
-            <option value="important">重要</option>
-            <option value="feature">新機能</option>
-            <option value="notice" selected>お知らせ</option>
-            <option value="event">イベント</option>
-            <option value="maintenance">メンテナンス</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="notifExcerpt">概要</label>
-          <input type="text" class="form-input" id="notifExcerpt" placeholder="お知らせ一覧に表示する概要文（省略時は本文の先頭を使用）">
-        </div>
-
-        <!-- Target + Timing Row -->
-        <div class="notif-form-row">
+        <!-- Color + Date Row -->
+        <div class="video-form-row">
           <div class="form-group">
-            <label class="form-label" for="notifTarget">対象</label>
-            <select class="form-input" id="notifTarget">
-              <option value="all">全ユーザー</option>
-              <option value="specific">特定ユーザー</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">送信タイミング</label>
-            <div class="notif-radio-group">
-              <label class="notif-radio-label">
-                <input type="radio" name="notifTiming" value="immediate" checked>
-                即時送信
-              </label>
-              <label class="notif-radio-label">
-                <input type="radio" name="notifTiming" value="scheduled">
-                スケジュール
-              </label>
+            <label class="form-label" for="videoColor">サムネイル色</label>
+            <input type="color" class="form-input" id="videoColor" value="#ef4444" style="height:40px;padding:4px;">
+            <div class="video-color-swatches">
+              <button type="button" class="video-color-swatch" data-color="#ef4444" style="background:#ef4444" title="#ef4444"></button>
+              <button type="button" class="video-color-swatch" data-color="#3b82f6" style="background:#3b82f6" title="#3b82f6"></button>
+              <button type="button" class="video-color-swatch" data-color="#8b5cf6" style="background:#8b5cf6" title="#8b5cf6"></button>
+              <button type="button" class="video-color-swatch" data-color="#10b981" style="background:#10b981" title="#10b981"></button>
+              <button type="button" class="video-color-swatch" data-color="#f59e0b" style="background:#f59e0b" title="#f59e0b"></button>
+              <button type="button" class="video-color-swatch" data-color="#ec4899" style="background:#ec4899" title="#ec4899"></button>
             </div>
           </div>
-        </div>
-
-        <!-- Preview Section -->
-        <div class="notif-preview" id="notifPreview" style="display:none;">
-          <div class="notif-preview-label">プレビュー</div>
-          <div class="notif-preview-title" id="notifPreviewTitle"></div>
-          <div class="notif-preview-body" id="notifPreviewBody"></div>
-          <div class="notif-preview-meta">
-            <span><i class="fa-solid fa-users"></i> <span id="notifPreviewTarget"></span></span>
+          <div class="form-group">
+            <label class="form-label" for="videoDate">公開日</label>
+            <input type="date" class="form-input" id="videoDate">
           </div>
         </div>
 
         <!-- Form Actions -->
-        <div class="notif-form-actions">
-          <button class="btn btn-ghost" id="notifPreviewBtn">
-            <i class="fa-solid fa-eye"></i> プレビュー
-          </button>
-          <button class="btn btn-primary" id="notifSendBtn">
-            <i class="fa-solid fa-paper-plane"></i> 送信
+        <div class="video-form-actions">
+          <button class="btn btn-primary" id="videoSaveBtn">
+            <i class="fa-solid fa-save"></i> 保存
           </button>
         </div>
       </div>
 
-      <!-- Notifications Table -->
+      <!-- Videos Table -->
       <div class="admin-table-wrapper">
         <table class="admin-table">
           <thead>
             <tr>
+              <th>サムネイル</th>
               <th>タイトル</th>
-              <th>タグ</th>
-              <th>対象</th>
-              <th>送信日時</th>
+              <th>URL</th>
+              <th>公開日</th>
+              <th>再生数</th>
               <th>ステータス</th>
               <th>操作</th>
             </tr>
           </thead>
-          <tbody id="notifTableBody"></tbody>
+          <tbody id="videoTableBody"></tbody>
         </table>
 
         <!-- Pagination -->
         <div class="admin-pagination">
-          <div class="admin-pagination-info" id="notifPaginationInfo"></div>
-          <div class="admin-pagination-controls" id="notifPaginationControls"></div>
+          <div class="admin-pagination-info" id="videoPaginationInfo"></div>
+          <div class="admin-pagination-controls" id="videoPaginationControls"></div>
         </div>
       </div>
     </main>
@@ -226,6 +193,6 @@
   <script src="assets/js/utils.js"></script>
   <script src="assets/js/mock-data.js"></script>
   <script src="assets/js/admin-nav.js"></script>
-  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/videos.js"></script>
 </body>
 </html>

@@ -47,6 +47,13 @@
         showToast('一般設定を保存しました');
       });
     }
+
+    var lineSaveBtn = document.getElementById('lineSaveBtn');
+    if (lineSaveBtn) {
+      lineSaveBtn.addEventListener('click', function () {
+        showToast('LINE設定を保存しました');
+      });
+    }
   }
 
   /* ---- Tab 2: Categories ---- */

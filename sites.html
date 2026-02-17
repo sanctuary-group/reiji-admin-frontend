@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REIJI Admin - 投稿管理</title>
+  <title>REIJI Admin - サイト管理</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/admin-layout.css">
   <link rel="stylesheet" href="assets/css/utilities.css">
-  <link rel="stylesheet" href="assets/css/pages/posts.css">
+  <link rel="stylesheet" href="assets/css/pages/sites.css">
 </head>
 <body>
   <script src="assets/js/theme.js"></script>
@@ -31,25 +31,51 @@
     <nav class="admin-sidebar-nav">
       <div class="admin-nav-section">
         <div class="admin-nav-section-label">メイン</div>
-        <a href="dashboard.html" class="admin-nav-item"><i class="fa-solid fa-gauge"></i><span>ダッシュボード</span></a>
-        <a href="users.html" class="admin-nav-item"><i class="fa-solid fa-users"></i><span>ユーザー管理</span></a>
-        <a href="posts.html" class="admin-nav-item active"><i class="fa-solid fa-newspaper"></i><span>投稿管理</span></a>
-        <a href="pnl.html" class="admin-nav-item"><i class="fa-solid fa-chart-line"></i><span>損益データ</span></a>
+        <a href="dashboard.html" class="admin-nav-item">
+          <i class="fa-solid fa-gauge"></i>
+          <span>ダッシュボード</span>
+        </a>
+        <a href="users.html" class="admin-nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span>ユーザー管理</span>
+        </a>
+        <a href="posts.html" class="admin-nav-item">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>投稿管理</span>
+        </a>
+        <a href="pnl.html" class="admin-nav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>損益データ</span>
+        </a>
       </div>
       <div class="admin-nav-section">
         <div class="admin-nav-section-label">コンテンツ</div>
-        <a href="videos.html" class="admin-nav-item"><i class="fa-solid fa-video"></i><span>動画管理</span></a>
-        <a href="sites.html" class="admin-nav-item"><i class="fa-solid fa-globe"></i><span>サイト管理</span></a>
-        <a href="notifications.html" class="admin-nav-item"><i class="fa-solid fa-bell"></i><span>お知らせ</span></a>
+        <a href="videos.html" class="admin-nav-item">
+          <i class="fa-solid fa-video"></i>
+          <span>動画管理</span>
+        </a>
+        <a href="sites.html" class="admin-nav-item active">
+          <i class="fa-solid fa-globe"></i>
+          <span>サイト管理</span>
+        </a>
+        <a href="notifications.html" class="admin-nav-item">
+          <i class="fa-solid fa-bell"></i>
+          <span>お知らせ</span>
+        </a>
       </div>
       <div class="admin-nav-section">
         <div class="admin-nav-section-label">システム</div>
-        <a href="settings.html" class="admin-nav-item"><i class="fa-solid fa-gear"></i><span>設定</span></a>
+        <a href="settings.html" class="admin-nav-item">
+          <i class="fa-solid fa-gear"></i>
+          <span>設定</span>
+        </a>
       </div>
     </nav>
     <div class="admin-sidebar-footer">
       <div class="admin-sidebar-user">
-        <div class="avatar avatar-sm"><img src="assets/img/avatars/default.svg" alt=""></div>
+        <div class="avatar avatar-sm">
+          <img src="assets/img/avatars/default.svg" alt="">
+        </div>
         <div class="admin-sidebar-user-info">
           <div class="admin-sidebar-user-name">管理者A</div>
           <div class="admin-sidebar-user-role">スーパー管理者</div>
@@ -69,7 +95,7 @@
         <button class="admin-sidebar-toggle" aria-label="メニュー切替">
           <i class="fa-solid fa-bars"></i>
         </button>
-        <h2 class="admin-page-title">投稿管理</h2>
+        <h2 class="admin-page-title">サイト管理</h2>
       </div>
       <div class="admin-header-right">
         <button class="theme-toggle" aria-label="テーマ切替"></button>
@@ -81,60 +107,40 @@
       <!-- Page Header -->
       <div class="admin-page-header">
         <div class="admin-page-header-left">
-          <h1>投稿管理</h1>
-          <p>ユーザーの投稿コンテンツを管理します</p>
+          <h1>サイト管理</h1>
+          <p>ユーザーのサイドバーに表示する有益サイトリンクを管理します</p>
         </div>
-        <button class="btn btn-primary">
-          <i class="fa-solid fa-plus"></i>
-          新規投稿
+        <button class="btn btn-primary" id="addCategoryBtn">
+          <i class="fa-solid fa-plus"></i> カテゴリを追加
         </button>
       </div>
 
-      <!-- Filter Bar -->
-      <div class="admin-filter-bar">
-        <div class="admin-search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="postSearch" placeholder="タイトル・投稿者で検索...">
-        </div>
-        <select class="admin-filter-select" id="postStatusFilter">
-          <option value="all">すべてのステータス</option>
-          <option value="published">公開</option>
-          <option value="draft">下書き</option>
-          <option value="flagged">フラグ付き</option>
-        </select>
-        <select class="admin-filter-select" id="postCategoryFilter">
-          <option value="all">すべてのカテゴリ</option>
-        </select>
+      <!-- Category Cards Container (rendered by JS) -->
+      <div id="sitesContainer">
+        <!-- Rendered by JS -->
       </div>
 
-      <!-- Posts Table -->
-      <div class="admin-table-wrapper">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>タイトル</th>
-              <th>投稿者</th>
-              <th>カテゴリ</th>
-              <th>投稿日</th>
-              <th>ステータス</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody id="postsTableBody"></tbody>
-        </table>
-
-        <!-- Pagination -->
-        <div class="admin-pagination">
-          <div class="admin-pagination-info" id="postsPaginationInfo"></div>
-          <div class="admin-pagination-controls" id="postsPaginationControls"></div>
+      <!-- Add Category Form (hidden by default) -->
+      <div class="sites-add-category-form" id="addCategoryForm">
+        <div class="sites-add-category-row">
+          <input type="text" class="form-input" id="newCategoryName" placeholder="新しいカテゴリ名を入力">
+          <div class="sites-add-category-actions">
+            <button class="btn btn-sm btn-primary" id="saveCategoryBtn">
+              <i class="fa-solid fa-check"></i> 保存
+            </button>
+            <button class="btn btn-sm btn-ghost" id="cancelCategoryBtn">
+              <i class="fa-solid fa-times"></i> キャンセル
+            </button>
+          </div>
         </div>
       </div>
+
     </main>
   </div>
 
   <script src="assets/js/utils.js"></script>
   <script src="assets/js/mock-data.js"></script>
   <script src="assets/js/admin-nav.js"></script>
-  <script src="assets/js/posts.js"></script>
+  <script src="assets/js/sites.js"></script>
 </body>
 </html>

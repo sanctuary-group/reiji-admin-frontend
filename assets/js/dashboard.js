@@ -6,7 +6,6 @@
     renderKPI();
     renderActivityTable();
     renderBarChart();
-    renderDonutChart();
   });
 
   function renderKPI() {
@@ -17,7 +16,6 @@
       { label: '総ユーザー数', value: formatNumber(MOCK_KPI.totalUsers), change: MOCK_KPI.changes.users, icon: 'fa-users', iconClass: 'primary' },
       { label: '本日アクティブ', value: formatNumber(MOCK_KPI.activeToday), change: MOCK_KPI.changes.active, icon: 'fa-user-check', iconClass: 'accent' },
       { label: '本日新規登録', value: formatNumber(MOCK_KPI.newToday), change: MOCK_KPI.changes.new, icon: 'fa-user-plus', iconClass: 'success' },
-      { label: 'プラットフォーム総損益', value: '¥' + formatNumber(MOCK_KPI.platformPnl), change: MOCK_KPI.changes.pnl, icon: 'fa-chart-line', iconClass: 'info' }
     ];
 
     container.innerHTML = cards.map(function (card) {
@@ -66,31 +64,4 @@
     }).join('');
   }
 
-  function renderDonutChart() {
-    var ring = document.getElementById('donutRing');
-    var legend = document.getElementById('donutLegend');
-    if (!ring || !legend) return;
-
-    var total = MOCK_CATEGORY_TRADES.reduce(function (sum, c) { return sum + c.count; }, 0);
-    var accumulated = 0;
-    var gradientParts = [];
-
-    MOCK_CATEGORY_TRADES.forEach(function (cat) {
-      var start = (accumulated / total) * 360;
-      accumulated += cat.count;
-      var end = (accumulated / total) * 360;
-      gradientParts.push(cat.color + ' ' + start + 'deg ' + end + 'deg');
-    });
-
-    ring.style.background = 'conic-gradient(' + gradientParts.join(', ') + ')';
-
-    legend.innerHTML = MOCK_CATEGORY_TRADES.map(function (cat) {
-      var pct = ((cat.count / total) * 100).toFixed(1);
-      return '<div class="donut-legend-item">' +
-        '<span class="donut-legend-dot" style="background:' + cat.color + '"></span>' +
-        '<span class="donut-legend-label">' + cat.category + '</span>' +
-        '<span class="donut-legend-value">' + cat.count + ' (' + pct + '%)</span>' +
-      '</div>';
-    }).join('');
-  }
 })();

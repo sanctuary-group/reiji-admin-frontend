@@ -49,12 +49,22 @@
         </a>
       </div>
       <div class="admin-nav-section">
-        <div class="admin-nav-section-label">システム</div>
+        <div class="admin-nav-section-label">コンテンツ</div>
+        <a href="videos.html" class="admin-nav-item">
+          <i class="fa-solid fa-video"></i>
+          <span>動画管理</span>
+        </a>
+        <a href="sites.html" class="admin-nav-item">
+          <i class="fa-solid fa-globe"></i>
+          <span>サイト管理</span>
+        </a>
         <a href="notifications.html" class="admin-nav-item">
           <i class="fa-solid fa-bell"></i>
           <span>お知らせ</span>
-          <span class="admin-nav-badge">1</span>
         </a>
+      </div>
+      <div class="admin-nav-section">
+        <div class="admin-nav-section-label">システム</div>
         <a href="settings.html" class="admin-nav-item active">
           <i class="fa-solid fa-gear"></i>
           <span>設定</span>
@@ -135,6 +145,36 @@
             </div>
             <div class="mt-6" style="text-align: right;">
               <button class="btn btn-primary" id="generalSaveBtn">
+                <i class="fa-solid fa-save"></i> 保存
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- LINE Settings -->
+        <div class="settings-card mt-6">
+          <div class="settings-card-header">LINE連携設定</div>
+          <div class="settings-card-body">
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-label">LINE相談リンク表示</div>
+                <div class="settings-row-desc">ユーザー画面のサイドバーに「レイジへ相談する」ボタンを表示します</div>
+              </div>
+              <label class="settings-toggle">
+                <input type="checkbox" id="settingLineEnabled" checked>
+                <span class="settings-toggle-track"></span>
+              </label>
+            </div>
+            <div class="form-group mt-4">
+              <label class="form-label" for="settingLineUrl">LINE URL</label>
+              <input type="url" id="settingLineUrl" class="form-input" placeholder="https://line.me/R/ti/p/..." value="https://line.me/R/ti/p/example">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="settingLineText">ボタンテキスト</label>
+              <input type="text" id="settingLineText" class="form-input" placeholder="レイジへ相談する" value="レイジへ相談する">
+            </div>
+            <div class="mt-6" style="text-align: right;">
+              <button class="btn btn-primary" id="lineSaveBtn">
                 <i class="fa-solid fa-save"></i> 保存
               </button>
             </div>
