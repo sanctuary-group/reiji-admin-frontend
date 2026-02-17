@@ -78,20 +78,6 @@ var MOCK_NOTIFICATIONS = [
   { id: 5, title: '新規カテゴリ「配当金」追加のお知らせ', body: '取引カテゴリに「配当金」を追加しました。損益記録にご活用ください。', tag: '新機能', tagClass: 'badge-primary', excerpt: '取引カテゴリに「配当金」を追加しました。', target: '全ユーザー', sentAt: '2026-01-28T16:00:00', status: 'sent' }
 ];
 
-/* ---- Activity Log ---- */
-var MOCK_ACTIVITY_LOG = [
-  { datetime: '2026-02-11T11:30:00', admin: '管理者A', action: 'ユーザーを停止', target: '高橋 美咲' },
-  { datetime: '2026-02-11T10:15:00', admin: '管理者A', action: 'お知らせを送信', target: 'システムメンテナンスのお知らせ' },
-  { datetime: '2026-02-11T09:00:00', admin: '管理者B', action: '投稿をフラグ', target: '不適切なコンテンツのテスト投稿' },
-  { datetime: '2026-02-10T16:45:00', admin: '管理者A', action: 'カテゴリを編集', target: '仮想通貨' },
-  { datetime: '2026-02-10T14:30:00', admin: '管理者B', action: '新規ユーザーを承認', target: '山田 愛' },
-  { datetime: '2026-02-10T11:00:00', admin: '管理者A', action: 'システム設定を変更', target: 'メンテナンスモード' },
-  { datetime: '2026-02-09T17:20:00', admin: '管理者A', action: 'お知らせを作成', target: '新機能リリース' },
-  { datetime: '2026-02-09T10:00:00', admin: '管理者B', action: 'P&Lデータをエクスポート', target: '2026年1月分' },
-  { datetime: '2026-02-08T15:30:00', admin: '管理者A', action: 'ユーザーを復旧', target: '渡辺 優子' },
-  { datetime: '2026-02-08T09:45:00', admin: '管理者B', action: '投稿を削除', target: 'スパム投稿' }
-];
-
 /* ---- Platform Stats (for dashboard charts placeholder) ---- */
 var MOCK_DAILY_REGISTRATIONS = [
   { date: '2/5', count: 3 },

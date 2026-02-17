@@ -9,28 +9,6 @@
   margin-bottom: var(--space-6);
 }
 
-/* Activity Table */
-.dashboard-activity {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-}
-
-.dashboard-activity-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-4) var(--space-5);
-  border-bottom: 1px solid var(--border-primary);
-}
-
-.dashboard-activity-title {
-  font-size: var(--text-base);
-  font-weight: var(--font-semibold);
-  color: var(--text-primary);
-}
-
 /* Chart Placeholder */
 .chart-placeholder {
   background: var(--bg-secondary);

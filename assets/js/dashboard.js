@@ -4,7 +4,6 @@
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
     renderKPI();
-    renderActivityTable();
     renderBarChart();
   });
 
@@ -31,20 +30,6 @@
           '</div>' +
         '</div>' +
       '</div>';
-    }).join('');
-  }
-
-  function renderActivityTable() {
-    var tbody = document.getElementById('activityTableBody');
-    if (!tbody) return;
-
-    tbody.innerHTML = MOCK_ACTIVITY_LOG.map(function (log) {
-      return '<tr>' +
-        '<td><span class="font-mono" style="font-size:var(--text-xs)">' + formatDateTime(log.datetime) + '</span></td>' +
-        '<td>' + log.admin + '</td>' +
-        '<td>' + log.action + '</td>' +
-        '<td><span style="font-weight:var(--font-medium)">' + log.target + '</span></td>' +
-      '</tr>';
     }).join('');
   }
 
